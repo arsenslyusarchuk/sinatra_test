@@ -30,8 +30,6 @@ class SinatraWardenExample < Sinatra::Base
       action: 'auth/unauthenticated'
     # When a user tries to log in and cannot, this specifies the
     # app to send the user to.
-    p 'asdasdasdasdasdasd'
-    p self
     config.failure_app = self
   end
 
@@ -162,8 +160,7 @@ class SinatraWardenExample < Sinatra::Base
   end
 
   post '/auth/unauthenticated' do
-    # session[:return_to] = env['warden.options'][:attempted_path]
-    flash[:error] = "You must log in"
+    flash[:error] = "Wrong Email or Password"
     redirect '/auth/login'
   end
 end
